@@ -430,7 +430,7 @@ implementation of the \lstinline{rank()} method is given below.
 			int mid = low + (hi - lo)/2;
 			int cmp = key.compareTo(keys[mid]);
 			if		(cmp < 0) hi = mid-1;
-			else if 	(cmp > 0) hi = mid+1;
+			else if 	(cmp > 0) lo = mid+1;
 			else	 return mid; 		
 		}
 		
