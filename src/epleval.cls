@@ -14,7 +14,7 @@
 \LoadClass{../../../../../../eplbase}
 
 \newcommand{\hypertitle}[9][e ]{%
-\basehypertitle[#1]{#2}{#3}{#4}{#5}{#8}{#9}{\epltype{} \IfLanguageName{english}{of}{de} #7 #6}}
+\basehypertitle[#1]{#2}{#3}{#4}{#5}{#8}{#9}{\Epltype{} \IfLanguageName{english}{of}{de} #7 #6}}
 
 \ifthenelse{\isundefined{\Sol}}{\def\Sol{true}}{}
 
@@ -25,12 +25,14 @@
 
 \RequirePackage{../../../../../../eplcommon}
 
+\RequirePackage{fancybox}
+
 \RequirePackage{titlesec}
 \titleformat
 {\section} % command
-[display] % shape
-{\bfseries\Large} % format
-{Question \thesection} % label
+[hang] % shape
+{\bfseries} % format
+{\shadowbox{~\thesection~}} % label
 {0.5ex} % sep
 {} % before-code
 

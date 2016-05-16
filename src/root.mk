@@ -6,7 +6,6 @@
 #PDFVIEWER=xpdf # lightweight
 PDFVIEWER=xdg-open # Default pdf viewer - GNU/Linux
 #PDFVIEWER=open # Default pdf viewer - Mac OS
-MAIN_NAME=${COURSE}-${TYPE}
 ifneq (,$(filter $(TYPE),exam test))
   MAIN_NAME=${COURSE}-${TYPE}-${YEAR}-${MONTH}-${MINMAJ}
 else
@@ -76,11 +75,11 @@ show: $(FULL)
 
 release: all
 ifneq (,$(filter $(TYPE),exam test))
-	cd ../../../../../..; smartcp -vvvv -s \
+	cd ../../../../../..; python3 ~/git/smartcp/smartcp.py --google-drive -vvvv -s \
 	  quadri=$(QUADRI) -s cours=$(COURSE) -s type=$(TYPE) -s year=$(YEAR) -s month=$(MONTH) -s minmaj=$(MINMAJ) $(SETSOL) config.yml
 else
-	cd ../../..; smartcp -vv -s \
-	  quadri=$(QUADRI) -s cours=$(COURSE) -s type=$(TYPE) $(SETSOL) config.yml
+	cd ../../..; python3 ~/git/smartcp/smartcp.py --google-drive -vv -s \
+	  quadri=$(QUADRI) -s cours=$(COURSE) -s type=$(TYPE) -s num=$(NUM) $(SETSOL) config.yml
 endif
 
 add:

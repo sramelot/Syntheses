@@ -1,14 +1,13 @@
 # Synthèses de l'EPL
+
+[![Join the chat at https://gitter.im/Gp2mv3/Syntheses](https://badges.gitter.im/Gp2mv3/Syntheses.svg)](https://gitter.im/Gp2mv3/Syntheses?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Les documents présents sur ce repository sont des documents
 mis à disposition pour les étudiants de l'EPL.
 
 ## Visualisation des synthèses et correctifs
 Les `.pdf` des synthèses et correctifs dans leur dernière version sont disponibles
-[ici](https://www.dropbox.com/sh/mglnckwio1ug5x0/BgESQh2X2a).
-
-Ces derniers sont aussi dans
-[EPL-Backup](https://www.dropbox.com/sh/5a1dfg8e17bbgkw/bgVWq1icjf)
-ainsi que d'autre documents utiles qui ne viennent pas de ce repository.
+[ici](https://drive.google.com/a/student.uclouvain.be/folderview?id=0B5WS2yn5sWqDV3ZhdlNXdWFLT0U&usp=sharing).
 
 ## Documentation
 Ce README donne quelques premières indications
@@ -36,6 +35,12 @@ Voir aussi le [wiki](https://github.com/Gp2mv3/Syntheses/wiki) à ce sujet.
 Vous pouvez visualiser le statut des différentes synthèses
 [ici](https://github.com/Gp2mv3/Syntheses/wiki/Status).
 N'hésitez pas à en rajouter dans la liste :)
+
+## License
+Sauf mention expresse, vous licensiez sous license [CC-BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/)
+tout le contenu que vous soumettez pour inclusion dans ce dépot.
+
+Si cette license vous pose problème, venez en discuter en ouvrant une [issue](https://github.com/Gp2mv3/Syntheses/issues/new).
 
 ## Copier les synthèses à leur destination
 Vous pouvez copier les synthèses automatiquement vers leur destination à l'aide de `make release` mais pour cela il vous faut d'abord spécifier les destination dans un fichier de configuration `src/config.yml` et installer

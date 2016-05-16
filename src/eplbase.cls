@@ -12,8 +12,23 @@
 % If you want to compile without it
 \DeclareOption{skiptoc}{\newcommand{\skiptableofcontents}{}}
 \DeclareOption{skiptitle}{\newcommand{\skiptitlepage}{}}
+\DeclareOption{license=none}{\newcommand{\nolicense}{}}
 
 \DeclareOption{usereportclass}{\newcommand{\usereport}{}}
+\DeclareOption{10pt}{
+\ifcsname usereport\endcsname%
+\PassOptionsToClass{10pt}{report}
+\else%
+\PassOptionsToClass{10pt}{article}
+\fi%
+}
+\DeclareOption{landscape}{
+\ifcsname usereport\endcsname%
+\PassOptionsToClass{landscape}{report}
+\else%
+\PassOptionsToClass{landscape}{article}
+\fi%
+}
 
 \DeclareOption*{\ClassError{eplbase}{I have not the faintest idea of what you wanted to do when you gave the the option ``\CurrentOption''. I could have just thrown a warning, ignore it and continue compiling but I think I will just stop here. Press ``H'' for help}{If you really don't understand why I say that, please ask on Github with an issue.}}
 
@@ -21,9 +36,9 @@
 \ProcessOptions\relax
 
 \ifcsname usereport\endcsname%
-\LoadClass[11pt,a4paper]{report}
+\LoadClass[a4paper]{report}
 \else%
-\LoadClass[11pt,a4paper]{article}
+\LoadClass[a4paper]{article}
 \fi%
 
 \RequirePackage[utf8x]{inputenc}
@@ -35,6 +50,7 @@
 
 \RequirePackage{ifthen}
 \RequirePackage{url}
+\RequirePackage{xparse}
 
 %%% SECTION TITLE APPEARANCE
 \RequirePackage{sectsty}
@@ -94,7 +110,7 @@
 
 % le `[e ]' rend le premier argument (#1) optionnel
 % avec comme valeur par défaut `e `
-\newcommand{\basehypertitle}[8][e ]{
+\DeclareDocumentCommand{\basehypertitle}{ O{e } m m m m m m m O{} }{
 
 {\renewcommand{\and}{\unskip, }
 \hypersetup{pdfauthor={#6},
@@ -124,11 +140,11 @@
    {It has been written by the aforementioned authors with the help of all other students,
    yours is therefore welcome as well.
    It is always possible to improve it,
-   it is even more true if the course has changed because the summary must be updated accordingly.
+   it is even more true if the course has changed because the \epltype{} must be updated accordingly.
    The source code and a link to the latest version of the pdf can be found at the following address}
    {Il est écrit par les auteurs susnommés avec l'aide de tous
    les autres étudiants, la vôtre est donc la bienvenue.
-   Il y a toujours moyen de l'améliorer, surtout si le cours change car la synthèse doit alors être mise à jour en conséquence.
+   Il y a toujours moyen de l'améliorer, surtout si le cours change car la \epltype{} doit alors être mise à jour en conséquence.
    On peut retrouver le code source et un lien vers la dernière version du pdf à l'adresse suivante}
    \begin{center}
      \url{https://github.com/Gp2mv3/Syntheses}.
@@ -164,8 +180,8 @@
      \url{https://github.com/Gp2mv3/Syntheses/wiki}
    \end{center}
    \IfLanguageName{english}
-   {like the status of the summaries for each course}
-   {comme le statut des synthèses pour chaque cours}
+   {like the status of the \epltype{}s for each course}
+   {comme le statut des \epltype{}s pour chaque cours}
    \begin{center}
      \url{https://github.com/Gp2mv3/Syntheses/wiki/Status}
    \end{center}
@@ -178,11 +194,11 @@
    \IfLanguageName{english}
    {To contribute to the bug tracker or the wiki,
    you just have to create an account on GitHub.
-   To interact with the source code of the summaries,
+   To interact with the source code of the \epltype{}s,
    you will have to install}
    {Pour contribuer au bug tracker et au wiki, il vous suffira de
    créer un compte sur GitHub.
-   Pour interagir avec le code des synthèses,
+   Pour interagir avec le code des \epltype{}s,
    il vous faudra installer}
    \LaTeX.
    \IfLanguageName{english}
@@ -198,6 +214,19 @@
    {Si cela pose problème,
    nous sommes évidemment ouverts à des contributeurs envoyant leurs
    changements par mail ou par n'importe quel autre moyen.}
+
+   #9
+
+    \ifthenelse{\isundefined{\nolicense}}{
+        \bigskip
+        \paragraph{License} \IfLanguageName{english}
+        {This work is licensed under the Creative Commons Attribution 4.0 Unported License.
+            To view a copy of this license, visit \url{http://creativecommons.org/licenses/by/4.0/},
+        or look into the github repository (see above).}
+        {Ce travail est disponible sous license Creative Commons Attribution 4.0 Unported.
+            Une copie de cette license est disponible sur \url{http://creativecommons.org/licenses/by/4.0/},
+        on dans le dépot github (voir ci-dessus).}
+    }{}
 \end{titlepage}
 }{}
 
